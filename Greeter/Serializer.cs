@@ -1,7 +1,5 @@
-﻿using System;
-using Bond;
-using Bond.IO.Unsafe;
-using Bond.Protocols;
+﻿using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RenCapGrpc.Shared
 {
@@ -9,19 +7,18 @@ namespace RenCapGrpc.Shared
     {
         public static byte[] ToBytes(T obj)
         {
-            var buffer = new OutputBuffer();
-            var writer = new FastBinaryWriter<OutputBuffer>(buffer);
-            Serialize.To(writer, obj);
-            var output = new byte[buffer.Data.Count];
-            Array.Copy(buffer.Data.Array, 0, output, 0, (int)buffer.Position);
-            return output;
+            var bs = new BinaryFormatter();
+            var ms = new MemoryStream();
+            bs.Serialize(ms, obj);
+            return ms.ToArray();
         }
 
         public static T FromBytes(byte[] bytes)
         {
-            var buffer = new InputBuffer(bytes);
-            var data = Deserialize<T>.From(new FastBinaryReader<InputBuffer>(buffer));
-            return data;
+            var bs = new BinaryFormatter();
+            var ms = new MemoryStream(bytes);
+            var data = bs.Deserialize(ms);
+            return (T)data;
         }
     }
 }

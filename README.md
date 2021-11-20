@@ -1,10 +1,8 @@
-gRPC in 3 minutes (C#)
-========================
+gRPC custom serialization
+=========================
 
 BACKGROUND
 -------------
-For this sample, we've already generated the server and client stubs from [helloworld.proto][].
-
 Example projects depend on the [Grpc](https://www.nuget.org/packages/Grpc/), [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/)
 and [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/) NuGet packages
 which have been already added to the project for you.
@@ -38,16 +36,22 @@ Try it!
   ```
   > cd GreeterClient/bin/Debug
   > GreeterClient.exe
+
+  ```
+
+- Run all 
+
+  ```
+  > start.bat
+
   ```
 
 You can also run the server and client directly from the IDE.
 
 On Linux or Mac, use `mono GreeterServer.exe` and `mono GreeterClient.exe` to run the server and client.
 
-Tutorial
+Recommended content
 --------
 
-You can find a more detailed tutorial in [gRPC Basics: C#][]
-
-[helloworld.proto]:../../protos/helloworld.proto
-[gRPC Basics: C#]:http://www.grpc.io/docs/tutorials/basic/csharp.html
+[gRPC Basics: C#](http://www.grpc.io/docs/tutorials/basic/csharp.html)
+[Using gRPC with custom serializers](https://bartoszsypytkowski.com/c-using-grpc-with-custom-serializers/)

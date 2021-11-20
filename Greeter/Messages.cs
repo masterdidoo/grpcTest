@@ -1,18 +1,16 @@
-﻿using Bond;
+﻿using System;
 
 namespace RenCapGrpc.Shared
 {
-    [Schema]
+    [Serializable]
     public class CustomRequest
     {
-        [Id(0)]
         public int Payload { get; set; }
     }
 
-    [Schema]
+    [Serializable]
     public class CustomResponse
     {
-        [Id(0)]
         public int Payload { get; set; }
     }
 }

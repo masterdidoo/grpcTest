@@ -1,8 +1,4 @@
-﻿using Bond;
-using Bond.IO.Safe;
-using Bond.Protocols;
-
-namespace RenCapGrpc.Shared
+﻿namespace RenCapGrpc.Shared
 {
     using Grpc.Core;
     public class Descriptors
