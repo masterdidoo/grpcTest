@@ -54,4 +54,5 @@ Recommended content
 --------
 
 [gRPC Basics: C#](http://www.grpc.io/docs/tutorials/basic/csharp.html)
+
 [Using gRPC with custom serializers](https://bartoszsypytkowski.com/c-using-grpc-with-custom-serializers/)
