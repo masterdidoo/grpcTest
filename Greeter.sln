@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greeter", "Greeter\Greeter.csproj", "{724DFC8C-4B57-4C3F-811C-0463BE2A2829}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF1EBE
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{68F226B8-5F13-40F5-85DE-E08EF2D5A352}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +34,16 @@ Global
 		{ACCF4597-3748-4117-8633-1CB767F8CCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACCF4597-3748-4117-8633-1CB767F8CCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACCF4597-3748-4117-8633-1CB767F8CCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F226B8-5F13-40F5-85DE-E08EF2D5A352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F226B8-5F13-40F5-85DE-E08EF2D5A352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F226B8-5F13-40F5-85DE-E08EF2D5A352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F226B8-5F13-40F5-85DE-E08EF2D5A352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8196231F-4BA6-4F06-B00A-02306B5222F7}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Greeter\Greeter.csproj

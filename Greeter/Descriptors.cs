@@ -9,7 +9,7 @@ namespace RenCapGrpc.Shared
     {
         public static Method<CustomRequest, CustomResponse> Method =
                 new Method<CustomRequest, CustomResponse>(
-                    type: MethodType.DuplexStreaming,
+                    type: MethodType.Unary,
                     serviceName: "CustomService",
                     name: "CustomMethod",
                     requestMarshaller: Marshallers.Create(

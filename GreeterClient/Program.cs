@@ -6,38 +6,47 @@ using RenCapGrpc.Shared;
 
 namespace RenCapGrpc.Client
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static Channel channel;
+
+        public static void Main(string[] args)
         {
-            RunAsync().Wait();
+            channel = new Channel("127.0.0.1", 5000, ChannelCredentials.Insecure);
+
+            Run(1);
+            RunAsync(2).Wait();
+            Run(3);
+
+
+            channel.ShutdownAsync();
         }
 
-        private static async Task RunAsync()
+        private static void Run(int i)
         {
-            var channel = new Channel("127.0.0.1", 5000, ChannelCredentials.Insecure);
             var invoker = new DefaultCallInvoker(channel);
-            using (var call = invoker.AsyncDuplexStreamingCall(Descriptors.Method, null, new CallOptions{}))
             {
-                var responseCompleted = call.ResponseStream
-                    .ForEachAsync(async response =>
-                    {
-                        Console.WriteLine($"Got response: {response.Payload}");
-                    });
-                
-                for (int i = 0; i < 100; i++)
-                {
-                    await call.RequestStream.WriteAsync(new CustomRequest {Payload = i });
-                }
+                var response = invoker.BlockingUnaryCall(Descriptors.Method, null, new CallOptions { }, new CustomRequest { Payload = i });
 
-                await call.RequestStream.CompleteAsync();
-                await responseCompleted;
+                Console.WriteLine($"{i} Got sync response: {response.Payload}");
             }
 
             Console.WriteLine("Press enter to stop...");
             Console.ReadLine();
+        }
 
-            await channel.ShutdownAsync();
+        private static async Task RunAsync(int i)
+        {
+            var invoker = new DefaultCallInvoker(channel);
+            using (var call = invoker.AsyncUnaryCall(Descriptors.Method, null, new CallOptions{}, new CustomRequest { Payload = i }))
+            {
+                var response = await call.ResponseAsync;
+
+                Console.WriteLine($"{2} Got async response: {response.Payload}");
+            }
+
+            Console.WriteLine("Press enter to stop...");
+            Console.ReadLine();
         }
     }
 }
